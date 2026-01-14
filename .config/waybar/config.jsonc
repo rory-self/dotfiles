@@ -1,0 +1,80 @@
+{
+  // System dependent configurations
+  "include": [
+    "~/.config/waybar/local_config/clock.json",
+    "~/.config/waybar/local_config/modules-right.json",
+    "~/.config/waybar/local_config/modules-left.json"
+  ],
+
+  "layer": "top",
+	// Using margin-bottom with a negative value in order to reduce the space between Hyprland window and waybar
+	"margin-bottom": -10,
+	"margin-top": 0,
+  "modules-center": ["hyprland/workspaces"],
+	"height": 10,
+
+  "custom/expand": {
+    "format": "",
+    "tooltip": false
+  },
+
+  "group/expand": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "transition-to-left": true,
+      "click-to-reveal": false
+    },
+    "modules": ["custom/expand", "tray"]
+  },
+	
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-muted": " {volume}%",
+		"on-click":"pwvucontrol",
+		"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+		"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+
+	"tray":{
+    "icons": {
+      "Discord": ""
+    },
+		"icon-size":18,
+		"spacing": 10,
+    "reverse-direction": true
+	},
+
+  "memory": {
+    "interval": 30,
+    "format": " {}%",
+    "max-length": 10
+  },
+
+	"custom/player": {
+    "interval": 1,
+	  "return-type": "json",
+	  "exec": "~/.config/waybar/scripts/tidal.sh",
+	  "exec-if": "pgrep tidal-hifi",
+	  "escape": true,
+	  "on-click": "exec playerctl play-pause",
+	  "on-scroll-up": "exec playerctl previous",
+	  "on-scroll-down": "exec playerctl next"
+  },
+ 
+  "hyprland/workspaces": {
+    "format": "{icon}",
+	  "on-scroll-up": "hyprctl dispatch workspace e+1",
+	  "on-scroll-down": "hyprctl dispatch workspace e-1",
+	  "on-click": "activate"
+	},
+
+  "hyprland/window": {
+    "format": "{}"
+  }
+}

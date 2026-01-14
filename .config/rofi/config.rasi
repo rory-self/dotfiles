@@ -1,0 +1,14 @@
+@import "~/.cache/wal/colors-rofi-dark"
+
+configuration {
+  modes: "window,drun";
+}
+
+window {
+  width: 700px;
+}
+
+element {
+  children: [ element-text, element-icon ];
+}
+

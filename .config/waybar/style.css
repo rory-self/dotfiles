@@ -1,0 +1,82 @@
+@import "../../.cache/wal/colors-waybar.css";
+@import "../local_config/style.css";
+
+* {
+	border: none;
+	border-radius: 0;
+	font-family: "JetbrainsMono Nerd Font" ;
+	font-size: 13px;
+	min-height: 10px;
+}
+
+window#waybar {
+  all:unset
+}
+
+.modules-left {
+  background: alpha(@background, 0.6);
+  border-radius: 10px;
+  margin: 5 0 1 5;
+  padding: 3px;
+}
+
+.modules-center {
+  background: alpha(@background, 0.6);
+  border-radius: 10px;
+  margin: 5 0 1 0;
+  padding: 3px;
+}
+
+.modules-right {
+  background: alpha(@background, 0.6);
+  border-radius: 10px;
+  margin: 5 5 1 0;
+  padding: 3px;
+}
+
+#workspaces {
+	font-size: 4px;
+	font-weight: bold;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	background: transparent;
+	transition: none;
+}
+
+#workspaces button {
+	transition: none;
+	color: @color4;
+	background: transparent;
+	font-size: 16px;
+	border-radius: 5px;
+}
+
+#workspaces button.active {
+	box-shadow: none;
+	background: @color4;
+	color: @background;
+}
+
+#workspaces button:hover {
+	transition: none;
+	box-shadow: inherit;
+	text-shadow: inherit;
+	color: @foreground;
+	border-color: #E8A2AF;
+}
+
+#window {
+  color: @color4;
+}
+
+#custom-player, #custom-expand, #memory, #clock, #pulseaudio {
+  color: @color4;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#tray {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
