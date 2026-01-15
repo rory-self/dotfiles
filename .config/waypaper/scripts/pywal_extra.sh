@@ -1,7 +1,16 @@
 #!/bin/bash
+# Script used to update system configuration to use new pywal16 colours automatically, when
+# the desktop wallpaper is updated
 
 COLOURS_FILE="$HOME/.cache/wal/colors"
-TMUX_CONF="$HOME/.config/tmux/tmux.conf"
+TMUX_CONF_DIRECTORY="$HOME/.config/tmux"
+TMUX_COLOUR_CONF="$TMUX_CONF_DIRECTORY/colours.conf"
+
+# Save new colours to tmux configuration directory
+if [[ ! -e "$TMUX_CONF_DIRECTORY" ]]; then
+  mkdir "$TMUX_CONF_DIRECTORY"
+  echo "Created $TMUX_CONF_DIRECTORY directory."
+fi
 
 if [ -f "$COLOURS_FILE" ]; then
 	index=0
@@ -14,17 +23,18 @@ if [ -f "$COLOURS_FILE" ]; then
   	eval "echo color$i=\${color$i}"
 	done
 
-	rm "$TMUX_CONF"
+  if [[ -f "TMUX_COLOUR_CONF" ]]; then
+    rm "$TMUX_COLOUR_CONF"
+  fi
 
-	cat > "$TMUX_CONF" << EOF
-set -g status-style fg=${color4},bg=${color0}
+	cat > "$TMUX_COLOUR_CONF" << EOF
+set -g @status-style-string "fg=${color4},bg=${color0}"
+set -g @window-status-style-string "fg=${color0},bg=${color4}"
 
-set -g window-status-current-style fg=${color0},bg=${color4}
 EOF
 
-	tmux source "$TMUX_CONF"
-
+	tmux source "$TMUX_CONF_DIRECTORY/tmux.conf"
 else
-	eval "echo \"Could not find colors file\""
+  echo "ERROR: Could not find pywal16 colour file at $COLOURS_FILE."
 fi
 
