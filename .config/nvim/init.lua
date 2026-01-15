@@ -1,3 +1,4 @@
+vim.o.termguicolors = true
 require("config.lazy")
 
 -- Global Options --
@@ -53,6 +54,8 @@ vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
 -- LSP --
 vim.lsp.enable('clangd')
 vim.lsp.enable('zls')
+vim.lsp.enable('pyright')
+vim.lsp.enable('bashls')
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
