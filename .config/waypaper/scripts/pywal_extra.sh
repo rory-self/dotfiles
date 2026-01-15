@@ -1,7 +1,7 @@
 #!/bin/bash
 
-COLOURS_FILE="~/.cache/wal/colors"
-TMUX_CONF="~/.config/tmux/tmux.conf"
+COLOURS_FILE="$HOME/.cache/wal/colors"
+TMUX_CONF="$HOME/.config/tmux/tmux.conf"
 
 if [ -f "$COLOURS_FILE" ]; then
 	index=0
