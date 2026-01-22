@@ -8,7 +8,8 @@ vim.o.tabstop = 2
 vim.o.softtabstop = 0
 vim.o.shiftwidth = 2
 vim.o.linebreak = true
-vim.o.smartindent = true
+vim.o.smartindent = false
+vim.o.cindent = true
 
 -- Other
 vim.o.number = true
@@ -56,6 +57,7 @@ vim.lsp.enable('clangd')
 vim.lsp.enable('zls')
 vim.lsp.enable('pyright')
 vim.lsp.enable('bashls')
+vim.lsp.enable("rust")
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
