@@ -27,6 +27,4 @@ alias icat="kitten icat"
 ## Local Configurations ##
 if [ -f ~/.config/zsh/local_config ]; then
   source ~/.config/zsh/local_config
-else
-  print "No local zsh configuration found."
 fi
